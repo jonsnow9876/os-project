@@ -1,0 +1,87 @@
+/* ============================================================
+   index.css — Global styles: cyberpunk terminal OS aesthetic
+   Palette: deep space black + electric green + neon cyan
+   ============================================================ */
+
+:root {
+  --bg-deep:      #050a0e;
+  --bg-panel:     #0a1520;
+  --bg-card:      #0d1b2a;
+  --border:       #1a3a4a;
+  --border-glow:  #00ff88;
+
+  --green:        #00ff88;
+  --green-dim:    #00cc66;
+  --green-dark:   #003322;
+  --cyan:         #00d4ff;
+  --cyan-dim:     #0099cc;
+  --red:          #ff4466;
+  --red-dim:      #cc2244;
+  --amber:        #ffaa00;
+  --blue:         #4488ff;
+  --purple:       #aa66ff;
+  --white:        #e0f0ff;
+  --muted:        #4a6a7a;
+
+  --font-mono:    'Share Tech Mono', monospace;
+  --font-display: 'Orbitron', sans-serif;
+  --font-body:    'Exo 2', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg-deep);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 14px;
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  /* Subtle scanline effect */
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 136, 0.015) 2px,
+      rgba(0, 255, 136, 0.015) 4px
+    );
+}
+
+/* ── Scrollbars ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-panel); }
+::-webkit-scrollbar-thumb { background: var(--border-glow); border-radius: 3px; }
+
+/* ── Selection ───────────────────────────────────────────────── */
+::selection { background: var(--green-dark); color: var(--green); }
+
+/* ── Utility ─────────────────────────────────────────────────── */
+.glow-green  { text-shadow: 0 0 8px var(--green),  0 0 20px var(--green); }
+.glow-cyan   { text-shadow: 0 0 8px var(--cyan),   0 0 20px var(--cyan); }
+.glow-red    { text-shadow: 0 0 8px var(--red),    0 0 20px var(--red); }
+.glow-amber  { text-shadow: 0 0 8px var(--amber),  0 0 20px var(--amber); }
+
+/* ── Keyframes ───────────────────────────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulseGreen {
+  0%, 100% { box-shadow: 0 0 4px var(--green); }
+  50%       { box-shadow: 0 0 16px var(--green), 0 0 32px var(--green-dim); }
+}
+@keyframes runnerSlide {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
